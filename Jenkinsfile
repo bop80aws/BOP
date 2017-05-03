@@ -11,6 +11,8 @@ pipeline {
 				git(url: 'http://52.19.50.152/gerrit/ExampleWorkspace/ExampleProject/spring-petclinic', branch: 'master', credentialsId: 'f8e5a0d0-b489-4884-ace9-a74149ba8a30')
             	sh([script:"${tool 'ADOP Maven'}/bin/mvn compile -DskipTests"])
             	archiveArtifacts artifacts: '**/*'
+				sh 'ls -l ${WORKSPACE}'
+				sh 'ls -l ${WORKSPACE}/target'
 			}
       	}
     }
