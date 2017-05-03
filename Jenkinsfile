@@ -36,6 +36,10 @@ pipeline {
 			echo 'Build Number: ' + env.BUILD_NUMBER
 			echo JOB_NAME
 			
+			sh 'ls -l ${WORKSPACE}'
+			
+			sh 'ls -l ${WORKSPACE}/target'
+			
 			sh '''echo "
 			FROM tomcat:8.0 
 			ADD target/petclinic.war /usr/local/tomcat/webapps/
