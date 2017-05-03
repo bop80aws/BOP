@@ -36,11 +36,15 @@ pipeline {
 			echo 'Build Number: ' + env.BUILD_NUMBER
 			echo JOB_NAME
 			
-			sh '''echo "FROM tomcat:8.0 ADD target/petclinic.war /usr/local/tomcat/webapps/" > ${WORKSPACE}/Dockerfile
+			sh '''echo "
+			FROM tomcat:8.0 
+			ADD target/petclinic.war /usr/local/tomcat/webapps/
+			" > ${WORKSPACE}/Dockerfile
 			export REPO_NAME="$(echo ${JOB_NAME} | tr '/' '_' | tr '[:upper:]' '[:lower:]')"
 			docker build -t ${REPO_NAME}/adop-foss-java:0.0.${BUILD_NUMBER} .
 			echo "New image has been build - ${REPO_NAME}/adop-foss-java:0.0.${BUILD_NUMBER}"'''
 
+			
 		}
       }
     }
