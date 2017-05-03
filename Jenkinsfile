@@ -6,6 +6,9 @@ pipeline {
   stages {
     stage('App_Build_ST') {
         steps {
+			echo ${env.BUILD_NUMBER}
+			echo ${BUILD_NUMBER}
+			echo ${JOB_NAME}
 			echo 'Build Number: ' + env.BUILD_NUMBER
 			node(label: 'java8') {
 				git(url: 'http://52.19.50.152/gerrit/ExampleWorkspace/ExampleProject/spring-petclinic', branch: 'master', credentialsId: 'f8e5a0d0-b489-4884-ace9-a74149ba8a30')
@@ -34,11 +37,8 @@ pipeline {
 		node(label:'docker'){
 			echo 'Deploy_Environment_ST...'
 			echo 'Build Number: ' + env.BUILD_NUMBER
-				
-			archiveArtifacts artifacts: '**/*' 
-			
-			echo WORKSPACE
-
+			echo ${env.BUILD_NUMBER}
+			echo ${BUILD_NUMBER}
 		}
       }
     }
