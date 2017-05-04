@@ -28,7 +28,7 @@ pipeline {
 		node(label: 'java8') {
 			echo 'Code_Analysis_ST...'
 			echo 'Build Number: ' + env.BUILD_NUMBER
-			build job: 'Extra_Jobs/Sonar_Code_Analysis', parameters: [[$class: 'StringParameterValue', name: 'ProjectName', value: JOB_NAME]]
+			//build job: 'Extra_Jobs/Sonar_Code_Analysis', parameters: [[$class: 'StringParameterValue', name: 'ProjectName', value: JOB_NAME]]
 		}
       }
     }
