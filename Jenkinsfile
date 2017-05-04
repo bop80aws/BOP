@@ -6,8 +6,7 @@ pipeline {
   stages {
     stage('App_Build_ST') {
         steps {
-		echo env.BUILD_ID	
-		echo 'Build Number: ' + env.BUILD_NUMBER
+			echo 'Build Number: ' + env.BUILD_NUMBER
 			node(label: 'java8') {
 				git(url: 'https://github.com/bop80aws/PC.git', branch: 'master', credentialsId: '')
             	sh([script:"${tool 'ADOP Maven'}/bin/mvn clean install -DskipTests"])
